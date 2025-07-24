@@ -6,7 +6,7 @@ public class CreditCardPayment extends PaymentMethod {
     private String cardNumber;
     private String expirationDate;
 
-    public CreditCardPayment(String cardNumber, String expirationDate, String accountHolderName) {
+    public CreditCardPayment(String accountHolderName, String cardNumber, String expirationDate) {
         super(accountHolderName);
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
@@ -15,19 +15,20 @@ public class CreditCardPayment extends PaymentMethod {
     public String getCardNumber() {
         return cardNumber;
     }
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
+
     public String getExpirationDate() {
         return expirationDate;
-    }
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
     }
 
     @Override
     public boolean processPayment(double amount) {
-        return cardNumber.length() == 19;
+        if(cardNumber.length() == 19) {
+            System.out.printf("%.2f AZN payed with credit card.\n", amount);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override

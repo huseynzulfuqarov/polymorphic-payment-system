@@ -13,10 +13,6 @@ public abstract class PaymentMethod {
         return accountHolderName;
     }
 
-    public void setAccountHolderName(String accountHolderName) {
-        this.accountHolderName = accountHolderName;
-    }
-
     public abstract boolean processPayment(double amount);
 
     @Override

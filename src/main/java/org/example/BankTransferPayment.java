@@ -6,7 +6,7 @@ public class BankTransferPayment extends PaymentMethod {
     private String bankIban;
     private final double transferFee = 2.50;
 
-    public BankTransferPayment(String bankIban, String accountHolderName) {
+    public BankTransferPayment(String accountHolderName, String bankIban) {
         super(accountHolderName);
         this.bankIban = bankIban;
     }
@@ -15,17 +15,13 @@ public class BankTransferPayment extends PaymentMethod {
         return bankIban;
     }
 
-    public void setBankIban(String bankIban) {
-        this.bankIban = bankIban;
-    }
-
     public double getTransferFee() {
         return transferFee;
     }
 
     @Override
     public boolean processPayment(double amount) {
-        System.out.printf("%d + %d AZN amount pay with bank transfer method", amount, bankIban, transferFee);
+        System.out.printf("%.2f + %.2f AZN amount pay with bank transfer method.\n", amount, transferFee);
         return true;
     }
 
